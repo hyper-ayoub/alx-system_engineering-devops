@@ -4,8 +4,7 @@
 
 /**
  * infinite_while - infinite while loop
- *
- * Return: No value
+ * Return: 0
  */
 int infinite_while(void)
 {
@@ -17,24 +16,22 @@ int infinite_while(void)
 }
 
 /**
- * main - create 5 zombies
- *
+ * main - creates 5 zombie Zombie process
  * Return: 0
  */
 int main(void)
 {
-	for (int i = 0; i < 5; ++i)
+	int i;
+	pid_t zombie;
+
+	for (i = 0; i < 5; i++)
 	{
-		if (fork() == 0)
-		{
-			printf("Child process %d created.\n", getpid());
-			exit(0);
-		}
+		zombie = fork();
+		if (!zombie)
+			return (0);
+		printf("Zombie process created, PID: %d\n", zombie);
 	}
 
-	sleep(10);
-	printf("Parent process %d exiting.\n", getpid());
-
+	infinite_while();
 	return (0);
 }
-
