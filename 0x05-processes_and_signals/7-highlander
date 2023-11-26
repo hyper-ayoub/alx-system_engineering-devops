@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#Write a Bash script that displays but (I am invincible!!! when receiving a SIGTERM signal)
+
+while true
+do
+	echo "To infinity and beyond"
+	sleep 2
+	trap 'echo "I am invicible!!!"' SIGTERM
+done
