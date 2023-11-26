@@ -3,3 +3,5 @@
 
 echo "PID   PPID  USER     STAT  %CPU %MEM COMMAND"
 
+ps axo pid,ppid,user,stat,%cpu,%mem,command --forest
+
