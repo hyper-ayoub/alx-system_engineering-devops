@@ -1,4 +1,13 @@
-#!/usr/bin/env bash
-#Bash script that stops 4-to_infinity_and_beyond process.
+#!/bin/bash
 
-pkill -f 7-highlander
+kill_process() {
+  pid=$(pgrep -f "6-stop_me_if_you_can")
+  if [ -n "$pid" ]; then
+    echo "Killing process with PID $pid"
+    kill -TERM "$pid"
+  else
+    echo "Process not found"
+  fi
+}
+
+
