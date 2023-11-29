@@ -1,3 +1,2 @@
-#/usr/bin/env ruby
-#The regular expression must be exactly matching a string that starts with h ends with n and can have any single character in between.
+#!/usr/bin/env ruby
 puts ARGV[0].scan(/han/).join
