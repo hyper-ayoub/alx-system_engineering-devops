@@ -1,5 +1,5 @@
 #!/usr/bin/pup
-# installation
+# installation (python && Flask && werkzeug).
 package { 'python3-pip':
   ensure => installed,
 }
