@@ -27,8 +27,11 @@ Install It!
                  ensure   => '1.1.0',
                  provider => 'gem',
                   }
-                  
-or               gem install puppet-lint
+
+                    
+#Or: 
+
+          gem install puppet-lint
 
 
 
