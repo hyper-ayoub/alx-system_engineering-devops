@@ -1,4 +1,3 @@
-Install your load balancer:
 #!/usr/bin/env bash
 #Double the number of webservers
 sudo apt update
