@@ -1,22 +1,9 @@
 #!/usr/bin/env bash
 #This is the Script
 
-# Check if script is running with root privileges
-if [ "$(id -u)" -ne 0 ]; then
-    echo "Please run this script with sudo or as root."
-    exit 1
-fi
-
-# Stop Nginx if it's already running
-service nginx stop
-
-# Change Nginx user to nginx
-sed -i 's/^user .*;/user nginx;/g' /etc/nginx/nginx.conf
-
-# Change Nginx to listen on port 8080 on all active IPs
-sed -i 's/listen\s*[^:]*:/listen *:8080;/g' /etc/nginx/sites-enabled/default
-
-# Start Nginx
-service nginx start
-
-echo "Nginx configured to run as nginx user and listening on port 8080."
+sudo service ngnix stop
+echo "user ngnix"; >> /etc/ngnix/ngnix.conf
+chmod 644 /etc/ngnix/ngnix.conf
+sed -i 's/80/8080/g' /etc/ngnix/sites-available/default
+pkill apache2
+sudo service ngnix restart
