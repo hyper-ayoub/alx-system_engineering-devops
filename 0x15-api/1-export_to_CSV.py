@@ -1,4 +1,8 @@
 #!/usr/bin/python3
+#Python script
+
+""" code """
+
 import csv
 import requests
 import sys
