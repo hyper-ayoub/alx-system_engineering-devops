@@ -4,8 +4,8 @@
 """  export data in the CSV format """
 
 import requests
-import sys
 import csv
+import sys
 
 if __name__ == "__main__":
     # URL
