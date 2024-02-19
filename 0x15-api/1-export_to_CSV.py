@@ -7,21 +7,19 @@ import sys
 
 
 if __name__ == "__main__":
-    # Get the user ID from the command-line arguments provided to the script
+    # Get the user ID
     user_id = sys.argv[1]
 
-    # Define the base URL for the JSON API
+    # URL
     url = "https://jsonplaceholder.typicode.com/"
 
-    # Fetch user information from the API and
-    #   convert the response to a JSON object
+    # Fetch user information from the API
     user = requests.get(url + "users/{}".format(user_id)).json()
 
     # Extract the username from the user data
     username = user.get("username")
 
-    # Fetch the to-do list items associated with the
-    #   given user ID and convert the response to a JSON object
+    # Fetch the to-do list
     todos = requests.get(url + "todos", params={"userId": user_id}).json()
 
     # Use list comprehension to iterate over the to-do list items
