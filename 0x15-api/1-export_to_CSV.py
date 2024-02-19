@@ -56,6 +56,8 @@ if __name__ == "__main__":
                 ["2", "Antonette", "True", "totam atque quo nesciunt"]
             ])
         print(f"Data successfully exported to {filename}")
+        print(f"Number of tasks in CSV: {len(todos)}")
+        
     except Exception as e:
         print(f"Error exporting data: {e}")
 
