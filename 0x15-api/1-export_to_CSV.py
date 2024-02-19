@@ -27,11 +27,8 @@ if __name__ == "__main__":
     # Use list comprehension to iterate over the to-do list items
     # Write each item's details (user ID, username, completion status,
     # and title) as a row in the CSV file
-    
     with open("{}.csv".format(user_id), "w", newline="") as csvfile:
         writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
         [writer.writerow(
             [user_id, username, t.get("completed"), t.get("title")]
-         )for t in todos] 
-
-
+        ) for t in todos]
