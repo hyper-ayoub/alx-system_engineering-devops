@@ -4,7 +4,6 @@
 """ extend your Python script to export data in the JSON format from t#1 """
 
 import json
-import csv
 import requests
 import sys
 
@@ -13,7 +12,7 @@ if __name__ == "__main__":
     # id
     user_id = sys.argv[1]
 
-    #url
+    # url
     url = "https://jsonplaceholder.typicode.com/"
 
     # Fetch user information
@@ -41,4 +40,3 @@ if __name__ == "__main__":
     # json file
     with open("{}.json".format(user_id), "w") as jsonfile:
         json.dump(data_to_export, jsonfile, indent=4)
-
