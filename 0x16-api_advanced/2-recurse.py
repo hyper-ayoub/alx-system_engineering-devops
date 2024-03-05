@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" 2. Recurse it! """
+""" task 3 """
 import requests
 
 
