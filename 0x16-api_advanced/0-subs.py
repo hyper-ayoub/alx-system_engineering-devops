@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-this doc for module
+task 1
 """
 import requests
 
