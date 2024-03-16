@@ -1,52 +1,38 @@
+##
+# You should look at the following URL's in order to grasp a solid understanding
+# of Nginx configuration files in order to fully unleash the power of Nginx.
+# http://wiki.nginx.org/Pitfalls
+# http://wiki.nginx.org/QuickStart
+# http://wiki.nginx.org/Configuration
+#
+# Generally, you will want to move this file somewhere, and start with a clean
+# file but keep this around for reference. Or just disable in sites-enabled.
+#
+# Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
+##
+
+# Default server configuration
+#
 server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
-    server_name _;
-    root /var/www/html;
-    index index.html index.htm index.nginx-debian.html;
+        listen 80 default_server;
+        listen [::]:80 default_server;
+        root /home/ubuntu/AirBnB_clone_v4/web_dynamic;
 
-    add_header X-Served-By $hostname;
+        location / {
+                proxy_pass http://127.0.0.1:5003/2-hbnb;
+        }
+        location /airbnb-onepage/ {
+                proxy_pass http://127.0.0.1:5000;
+        }
 
-    error_page 404 /error_404.html;
-    error_page 500 502 503 504 /50x.html;
+        location ~ ^/airbnb-dynamic/number_odd_or_even/(\d+)$ {
+                proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+        }
 
-    location /hbnb_static/ {
-        alias /data/web_static/current/;
-    }
+        location /api/ {
+                proxy_pass http://127.0.0.1:5002;
+        }
 
-    location /airbnb-onepage/ {
-        proxy_pass http://127.0.0.1:5000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_buffering off;
-        proxy_redirect off;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_read_timeout 86400;
-    }
-
-    location ~ ^/airbnb-dynamic/number_odd_or_even/(\d+)$ {
-        rewrite ^/airbnb-dynamic/number_odd_or_even/(\d+)$ /number_odd_or_even/$1 break;
-        proxy_pass http://127.0.0.1:5001;
-    }
-
-    location /api {
-        proxy_pass http://127.0.0.1:5002;
-    }
-
-    location /static {
-        proxy_pass http://127.0.0.1:5003;
-    }
-
-    location = /50x.html {
-        root /usr/share/nginx/html;
-    }
-
-    location / {
-        try_files $uri $uri/ =404;
-        proxy_pass http://127.0.0.1:5003/2-hbnb;
-    }
+        location /static/ {
+        }
 }
