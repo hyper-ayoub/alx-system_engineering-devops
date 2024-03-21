@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# backup and compress my databases
+# Bash script that generates a MySQL dump and creates a compressed arc
 
 # variables
 day=$(date +"%d")
