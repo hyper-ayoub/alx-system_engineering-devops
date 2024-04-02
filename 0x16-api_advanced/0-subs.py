@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import requests
 
 headers = {"User-Agent": "MyCustomUserAgent/1.0"}
