@@ -12,9 +12,3 @@ def number_of_subscribers(subreddit):
         return "OK"  # Subreddit does not exist
     else:
         return 0  # Other errors
-
-# Test with existing subreddit
-print(number_of_subscribers("python"))  # Should print "OK"
-
-# Test with non-existing subreddit
-print(number_of_subscribers("nonexistent_subreddit"))  # Should print "OK"
