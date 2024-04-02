@@ -13,6 +13,11 @@ def number_of_subscribers(subreddit):
     response = requests.get(url, allow_redirects=False, headers=headers)
     if response.status_code == 200:
         data = response.json()
-        return data["data"]["subscribers"]
+        if "subscribers" in data["data"]:
+            return "OK"  # Subreddit exists
+        else:
+            return 0  # No subscribers data
+    elif response.status_code == 404:
+        return "OK"  # Subreddit does not exist
     else:
-        return 0
+        return 0  # Other errors
