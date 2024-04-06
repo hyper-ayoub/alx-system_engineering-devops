@@ -164,8 +164,13 @@ because the backup help you to return the old actions that you did and you forge
 
 
 
+![Colorful Minimalist Linear Steps Circular Diagram](https://github.com/hyper-ayoub/alx-system_engineering-devops/assets/133155846/af977645-75c9-476e-8969-38a6bbe88c79)
 
- 
+
+
+
+ ![IMMKT-153-illustration-for-postmortem-page](https://github.com/hyper-ayoub/alx-system_engineering-devops/assets/133155846/bc1358a6-4e70-4c5f-963e-0e193076b104)
+
 
 
 
