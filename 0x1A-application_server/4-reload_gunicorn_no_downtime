@@ -1,3 +1,19 @@
-#!/usr/bin/env bash
-# Kill gunicorn worker processe gracefully, with no downtime
-pkill -HUP gunicorn
+#!/bin/bash
+
+# Find the process IDs (PIDs) of Gunicorn workers
+pids=$(ps aux | grep '[g]unicorn' | awk '{print $2}')
+
+if [ -z "$pids" ]; then
+    echo "No Gunicorn processes found."
+    exit 1
+fi
+
+echo "Gracefully reloading Gunicorn..."
+
+# Iterate through each PID and send a graceful reload signal
+for pid in $pids; do
+    echo "Sending graceful reload signal to PID: $pid"
+    kill -HUP $pid
+done
+
+echo "Reload complete."
