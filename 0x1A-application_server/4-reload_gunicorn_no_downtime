@@ -1,1 +1,3 @@
-
+#!/usr/bin/bash
+# Assuming you have the Gunicorn process ID (PID)
+kill -HUP <pid>
