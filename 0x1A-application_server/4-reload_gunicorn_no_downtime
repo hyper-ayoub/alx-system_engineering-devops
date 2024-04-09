@@ -1,7 +1,3 @@
 #!/bin/bash
-# Gracefully reloads Gunicorn
-
-# Find and send HUP signal to Gunicorn processes
-echo "Reloading Gunicorn..."
+# gunicorn reload
 pgrep gunicorn | xargs -r kill -HUP
-echo "Gunicorn reloaded."
