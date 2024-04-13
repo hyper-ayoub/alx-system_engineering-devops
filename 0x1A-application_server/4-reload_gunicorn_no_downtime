@@ -1,14 +1,6 @@
 #!/usr/bin/env bash
-# Get the process ID of the Gunicorn master process
-main_pid=$(pgrep -f '^[^ ]*/?gunicorn ')
+# gunicorn reload
 
-# Check if the main_pid variable is empty
-if [ -z "$main_pid" ]; then
-        echo "Error: PID file not found"
-        exit 1
-fi
-
-# Send a termination signal to the Gunicorn master process
-kill -s TERM "$main_pid"
-
-# systemctl restart gunicorn.service
+pgrep gunicorn | xargs -r kill -HUP
+# restart
+sudo systemctl restart gunicorn
