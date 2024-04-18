@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
-# gunicorn reload
+# Script for gracefully restarting Gunicorn
 
-pgrep gunicorn | xargs -r kill -HUP
-# restart
+# Send HUP signal to Gunicorn master process
+pkill -HUP gunicorn
+
+# Sleep for a short duration to allow workers to gracefully finish ongoing requests
+sleep 5
+
+# Restart Gunicorn service
 sudo systemctl restart gunicorn
