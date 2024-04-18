@@ -1,18 +1,4 @@
 #!/usr/bin/env bash
-# Script for gracefully restarting Gunicorn
+# No service interruption
 
-# Specify the PID file location used by Gunicorn
-PID_FILE="/path/to/gunicorn.pid"
-
-# Check if the PID file exists
-if [ -f "$PID_FILE" ]; then
-    # Send HUP signal to Gunicorn master process using the PID from the file
-    kill -HUP "$(cat "$PID_FILE")"
-    echo "Sent HUP signal to Gunicorn master process."
-    sleep 5  # Sleep to allow workers to gracefully finish ongoing requests
-    # Restart Gunicorn service
-    sudo systemctl restart gunicorn
-    echo "Restarted Gunicorn service."
-else
-    echo "PID file not found. Gunicorn may not be running."
-fi
+pgrep gunicorn | xargs -I {} kill -HUP {}
