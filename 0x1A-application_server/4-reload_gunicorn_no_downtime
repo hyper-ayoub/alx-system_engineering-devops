@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # gunicorn reload
-pgrep gunicorn | xargs -r kill -HUP
+pgrep gunicorn | xargs kill -HUP
 # restart
 sudo systemctl restart gunicorn
