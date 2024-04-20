@@ -1,9 +1,4 @@
 #!/usr/bin/env bash
-# No service interruption
-
-# Find the PIDs of the Gunicorn master processes using pgrep
-MASTER_PIDS=$(pgrep gunicorn)
-
-# Gracefully reload each Gunicorn master process
-pgrep gunicorn | xargs -I {} kill -HUP {}
-
+# Gracefully reloads Gunicorn.
+#shellcheck disable=SC2009
+ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
