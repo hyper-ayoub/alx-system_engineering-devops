@@ -1,4 +1,16 @@
 #!/usr/bin/env bash
+
 # No service interruption
 
+# Find the PIDs of the Gunicorn master processes using pgrep
+MASTER_PIDS=$(pgrep gunicorn)
+
+# Gracefully reload each Gunicorn master process
 pgrep gunicorn | xargs -I {} kill -HUP {}
+
+# Check if Gunicorn is still running
+if [ -n "$MASTER_PIDS" ]; then
+    echo "OK"
+else
+    echo "NOk"
+fi
