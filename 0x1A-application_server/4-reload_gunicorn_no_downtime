@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 # Find the PIDs of the Gunicorn master processes using pgrep
 MASTER_PIDS=$(pgrep -f '[g]unicorn')
+
+echo "Master PIDs: $MASTER_PIDS"  # Debug output
+
 # Gracefully reload each Gunicorn master process
 for PID in $MASTER_PIDS; do
+    echo "Reloading Gunicorn with PID: $PID"  # Debug output
     kill -HUP "$PID"
 done
+
 # Check if Gunicorn is still running
 if ps -p "$MASTER_PIDS" > /dev/null; then
     echo "OK"
