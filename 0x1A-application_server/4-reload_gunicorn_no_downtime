@@ -1,3 +1,5 @@
 #!/usr/bin/env bash
 # gunicorn reload
-pgrep gunicorn | xargs -I {} kill -HUP {} sudo systemctl restart gunicorn
+pgrep gunicorn | xargs -I {} kill -HUP {}
+# restart
+sudo systemctl restart gunicorn
