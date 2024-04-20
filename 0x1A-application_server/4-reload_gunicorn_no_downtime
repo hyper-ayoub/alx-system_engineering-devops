@@ -1,12 +1,4 @@
 #!/usr/bin/env bash
-# Find the PIDs of the Gunicorn master processes using pgrep
-MASTER_PIDS=$(pgrep -f '[g]unicorn')
+# No service interruption
 
-# Gracefully reload each Gunicorn master process
-for PID in $MASTER_PIDS; do
-    echo "Reloading Gunicorn with PID: $PID"  # Debug output
-    kill -HUP "$PID"
-done
-
-# Output "OK" after attempting the reload
-echo "OK"
+pgrep gunicorn | xargs -I {} kill -HUP {}
