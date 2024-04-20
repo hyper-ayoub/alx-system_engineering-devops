@@ -2,3 +2,6 @@
 # Gracefully reloads Gunicorn.
 #shellcheck disable=SC2009
 ps aux | grep gunicorn | awk '{ print $2 }' | xargs kill -HUP
+# Output "OK" after gracefully reloading Gunicorn
+echo "OK"
+
