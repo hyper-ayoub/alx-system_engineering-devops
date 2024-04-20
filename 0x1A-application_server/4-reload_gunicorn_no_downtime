@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
-# gunicorn reload
-pgrep gunicorn | xargs -I {} kill -HUP {}
-# restart
-sudo systemctl restart gunicorn
+
+# Find the PID of the Gunicorn master process
+MASTER_PID=$(ps aux | grep '[g]unicorn' | awk '{print $2}')
+
+# Gracefully reload Gunicorn
+kill -HUP $MASTER_PID
+
+echo "Gunicorn reloaded gracefully."
