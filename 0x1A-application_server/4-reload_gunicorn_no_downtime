@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
-
 # gunicorn reload
 pgrep gunicorn | xargs kill -HUP
